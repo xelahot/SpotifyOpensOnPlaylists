@@ -1,0 +1,9 @@
+Package: com.xelahot.spotifyopensonplaylists
+Name: SpotifyOpensOnPlaylists
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: iOS tweak for jailbroken devices. Makes Spotify 8.9.68 open on the playlists tab.
+Maintainer: xelahot
+Author: xelahot
+Section: Tweaks
+Homepage: https://xelahot.github.io/
