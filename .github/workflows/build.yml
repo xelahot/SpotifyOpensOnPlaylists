@@ -28,6 +28,7 @@ jobs:
           run: |
             brew install make
             echo "PATH=$(brew --prefix make)/libexec/gnubin:$PATH" >> $GITHUB_ENV
+            
         - name: Install THEOS
           run: |
             set -x
@@ -42,22 +43,14 @@ jobs:
             tar -xf $THEOS/sdks/iPhoneOS16.5.sdk.tar -C $THEOS/sdks
             rm $THEOS/sdks/iPhoneOS16.5.sdk.tar
             cd $BASEDIR
+            
         - name: Build Package
           id: build_package
           run: |
             make package FINALPACKAGE=1
             echo "::set-output name=package::$(ls -t packages | head -n1)"
-        - name: Create Release
-          id: create_release
-          uses: actions/create-release@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            tag_name: ${{ github.ref }}
-            release_name: Release ${{ github.ref }}
-            draft: false
-            prerelease: false
-        - name: Upload Release Asset
+            
+        - name: Upload Artifact
           uses: actions/upload-release-asset@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
