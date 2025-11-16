@@ -19,6 +19,11 @@ jobs:
           with:
               submodules: recursive
         
+        - name: Install Procursus
+          uses: dhinakg/procursus-action@main
+          with:
+            packages: ldid findutils sed coreutils make
+        
         - name: Install better GNU Make
           run: |
             brew install make
